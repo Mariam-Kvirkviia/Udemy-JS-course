@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=script, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let game = {
+        team1: 'Bayern Munich',
+        team2: 'Borrussia Dortmund',
+        players: [
+          [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+          ],
+          [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+          ],
+        ],
+      };
+      let t =
+        ' underscore_case first_name Some_Variable calculate_AGE delayed_departure';
+      t = t.trim().split(' ');
+      let string = '';
+
+      for ([i, el] of t.entries()) {
+        [a, b] = el.toLowerCase().trim().split('_');
+
+        string += '🥳'.repeat(i + 1) + ' '+a + b[0].toUpperCase() + b.slice(1) + ' ' + '\n';
+      }
+      console.log(string);
+    </script>
+  </body>
+</html>
