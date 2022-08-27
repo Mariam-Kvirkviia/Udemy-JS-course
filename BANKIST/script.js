@@ -80,17 +80,18 @@ set.forEach((el, ind) => {
   console.log(el, ind);
 });*/
 const display = function (mov) {
+  containerMovements.innerHTML = '';
   mov.forEach((el, i) => {
-    let type = el > 0 ? 'deposit' : 'withrawl';
+    let type = el > 0 ? 'deposit' : 'withdrawal';
     let html = `<div class="movements__row">
-          <div class="movements__type movements__type--${type}">{${
+          <div class="movements__type movements__type--${type}">${
       i + 1
-    } ${type}}</div>
+    } ${type}</div>
           
-          <div class="movements__value">${el}</div>
-        </div>*/
+          <div class="movements__value">${el} &euro;</div>
+        </div>
  `;
-    
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 

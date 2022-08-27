@@ -88,21 +88,31 @@ nav {
   position: relative;
   max-width: 100rem;
   margin: 4rem auto;
-  display: grid;
-  grid-template-columns: 4fr 3fr;
-  grid-template-rows: auto repeat(3, 15rem) auto;
-  gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
   /*opacity: 0;*/
   transition: all 1s;
 }
+.app2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 
+  gap: 2rem;
+}
+@media (max-width: 960px) {
+  .app2 {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .movements__row {
+    justify-content: center;
+  }
+}
 .balance {
-  grid-column: 1 / span 2;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
 }
 
@@ -124,9 +134,9 @@ nav {
 
 /* MOVEMENTS */
 .movements {
-  grid-row: 2 / span 3;
   background-color: #fff;
   border-radius: 1rem;
+  height: 500px;
   overflow: scroll;
 }
 
@@ -134,6 +144,7 @@ nav {
   padding: 2.25rem 4rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #eee;
 }
 
@@ -164,16 +175,21 @@ nav {
 
 .movements__value {
   font-size: 1.7rem;
-  margin-left: auto;
 }
 
 /* SUMMARY */
+.sum-time {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
 .summary {
-  grid-row: 5 / 6;
   display: flex;
   align-items: baseline;
   padding: 0 0.3rem;
-  margin-top: 1rem;
 }
 
 .summary__label {
@@ -198,7 +214,6 @@ nav {
 }
 
 .btn--sort {
-  margin-left: auto;
   border: none;
   background: none;
   font-size: 1.3rem;
@@ -211,8 +226,18 @@ nav {
   border-radius: 1rem;
   padding: 3rem 4rem;
   color: #333;
+  margin-bottom: 20px;
 }
+@media (max-width: 490px) {
+  .form.form--close,
+  .form.form--transfer,
+  .form.form--loan {
+    grid-template-columns: 0.6fr;
 
+    grid-column: 1/-1;
+    justify-content: center;
+  }
+}
 .operation--transfer {
   background-image: linear-gradient(to top left, #ffb003, #ffcb03);
 }
@@ -234,9 +259,9 @@ h2 {
 
 .form {
   display: grid;
-  grid-template-columns: 2.5fr 2.5fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 0.4rem 1rem;
+  grid-template-columns: 1fr 1fr 0.7fr;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 /* Exceptions for interst */
@@ -286,10 +311,9 @@ h2 {
 }
 
 .logout-timer {
-  padding: 0 0.3rem;
-  margin-top: 1.9rem;
-  text-align: right;
   font-size: 1.25rem;
+  display: inline-block;
+  justify-self: flex-end;
 }
 
 .timer {
