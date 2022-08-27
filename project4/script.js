@@ -11,6 +11,7 @@ function plane(date = 12, num = 6, country = 'georgia') {
 }
 plane(4556, undefined, 'malibu');
 */
+
 /*//even in fucntion we change object reference
 let passport = '34866';
 let passanger = {
@@ -25,6 +26,7 @@ function check(passport, passanger) {
 check(passport, passanger);
 console.log(passport, passanger.country);
 */
+
 /*//destraction of objects
 
 const game = {
@@ -81,6 +83,7 @@ function printGoals(...gamers) {
   }
 }
 printGoals('mari', 'keti', 'koka');*/
+
 /* string practice
 let flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -102,6 +105,7 @@ for (let flight of flights.split('+')) {
   )})`.padStart(45);
   console.log(output);
 }*/
+
 /*//challenge object
 const game = {
   team1: 'Bayern Munich',
@@ -163,3 +167,44 @@ for (let [team, odd] of Object.entries(game.odds)) {
   console.log(`Odd of ${str}: ${odd}`.padEnd(23));
 }
 */
+
+/*//new Map / new Set
+
+let map = new Map();
+map
+  .set('open', 11)
+  .set('closed', 23)
+  .set(true, 'we are open')
+  .set(false, 'we are closed');
+let time = 21;
+console.log(map.get(map.get('open') < time && time < map.get('closed')));
+
+let arr = [1, 3, 4, 2, 4, 3, 4, 2];
+console.log(new Set(arr));
+
+*/
+
+/*//CHALLENGE new Map / new Set
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+let events = [...new Set(gameEvents.values())];
+let without = gameEvents.delete(64);
+let average = 90 / gameEvents.size;
+for (let [key, value] of gameEvents) {
+  let half = key <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half}  HALF] ${key}: ${value}`);
+}*/
+
+
+
