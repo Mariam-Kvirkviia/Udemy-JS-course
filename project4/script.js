@@ -206,5 +206,99 @@ for (let [key, value] of gameEvents) {
   console.log(`[${half}  HALF] ${key}: ${value}`);
 }*/
 
+/* //map/filter/reduce
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+/////////////////////////////////////////////////
+currencies.forEach((el, key) => {
+  console.log(el, key);
+});
+let set = new Set([1, 2, 34, 5, 6]);
+set.forEach((el, ind) => {
+  console.log(el, ind);
+});
+let movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+let eur = 1.1;
+let move = movements.map(el => el * eur);
+console.log(move);
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+let accounts = [account1, account2, account3, account4];
+
+let displayy = function (accounts) {
+  accounts.forEach(account => {
+    account.username = account.owner
+      .toLowerCase()
+      .split(' ')
+      .map(el => el[0])
+      .join('');
+  });
+};
+displayy(accounts);
+console.log(accounts);
+
+let m = [4,  7, -8];
+let n = m.reduce((acc, el) => {
+  return acc + el;
+}, 0);
+console.log(n);
+
+let numbers = [5, -6, 7, 789, 4, -6, 6.87];
+let g = numbers.reduce((acc, el) => {
+  return acc > el ? acc : el;
+});
+console.log(g);
 
 
+
+
+
+let julia = [5, 2, 4, 1, 15, 8, 3];
+let kate = [16, 6, 10, 5, 6, 1, 4];
+let ages = [...julia, ...kate];
+let calculate = function calcAverage(ages) {
+  let newAge = ages
+    .map(el => (el <= 2 ? 2 * el : 16 + el * 4))
+    .filter(el => el >= 18)
+    .reduce((acc, el, i, arr) => acc + el / arr.length, 0);
+  console.log(newAge);
+};
+
+calculate(ages);
+
+let account = accounts.forEach(el => {
+  el.owner === 'Jessica Davis' ? console.log(el) : '';
+});
+let accountf = accounts.find(el => el.owner === 'Jessica Davis');
+console.log(accountf);
+
+*/
