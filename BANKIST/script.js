@@ -159,6 +159,16 @@ btnTransfer.addEventListener('click', function (event) {
   }
 });
 
+btnLoan.addEventListener('click', function (event) {
+  event.preventDefault();
+  let amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) {
+    currentAccount.movements.push(amount);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (event) {
   event.preventDefault();
 
@@ -171,7 +181,46 @@ btnClose.addEventListener('click', function (event) {
     );
     accounts.splice(index, 1);
     containerApp.style.opacity = 0;
-    console.log(index);
   }
   inputCloseUsername.value = inputClosePin.value = '';
 });
+
+let overallBalance = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, el) => acc + el, 0);
+
+btnSort.addEventListener('click', function (event) {
+  event.preventDefault();
+  currentAccount.movements.sort((a, b) => {
+    if (a > b) return 1;
+    if (a < b) return -1;
+  });
+  updateUI(currentAccount);
+});
+
+let { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sum, el) => {
+      sum[el > 0 ? 'deposits' : 'withdrawals'] += el;
+      return sum;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+let Dogs = [
+  { owner: ['alice', 'bob'], weight: 22, eats: 250 },
+  { owner: ['matilda'], weight: 8, eats: 200 },
+  { owner: 'Kate', weight: 13, eats: 275 },
+  { owner: 'Kate', weight: 32, eats: 340 },
+];
+Dogs.map(el => (el.recommendedFood = el.weight ** 0.75 * 28));
+let sara = Dogs.find(el => el.owner.includes('Sara'));
+
+let allMore = Dogs.map(el => {
+  if (el.recommendedFood > el.eats) {
+    console.log('eats more');
+  }
+});
+
+console.log(allMore);

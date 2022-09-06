@@ -302,3 +302,189 @@ let accountf = accounts.find(el => el.owner === 'Jessica Davis');
 console.log(accountf);
 
 */
+/* sort
+let arr = [2, 4, 9, 644, 7];
+arr.sort((a, b) => {
+  if (a > b) return 1;
+  if (b > a) return -1;
+});
+console.log(arr);
+*/
+/* new Array/fill
+let n = new Array(3);
+console.log(n.fill(9, 0, 1));
+  
+
+let n = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(n);
+*/
+
+/*let { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sum, el) => {
+      sum[el > 0 ? 'deposits' : 'withdrawals'] += el;
+      return sum;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+console.log(deposits, withdrawals);
+
+let convert = function (title) {
+  let expect = ['a'];
+  let titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(el => (expect.includes(el) ? el : el[0].toUpperCase() + el.slice(1)))
+    .join(' ');
+  return titleCase;
+};
+
+console.log(convert('make a nDFce title'));*/
+
+/*// call/apply/bind
+
+let luftansa = {
+  airline: 'luftansa',
+  code: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} ${this.code}`);
+    this.bookings.push({ fl: 34 });
+  },
+};
+console.log(luftansa);
+luftansa.book(3, 'jonas');
+let euroWings = {
+  aitline: 'euroWings',
+  code: 'EW',
+  bookings: [],
+  book() {},
+};
+let book = luftansa.book;
+let bookEW = book.bind(euroWings);
+let bookLH = book.bind(luftansa);
+bookEW(23, 'koka');
+bookLH(456, 'keti');
+
+luftansa.planes = 109;
+luftansa.buyPlane = function () {
+  console.log(this);
+  console.log(this.planes++);
+};
+document
+  .querySelector('.buy')
+  .addEventListener('click', luftansa.buyPlane.bind(luftansa));
+
+let addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));*/
+
+/* NEDD TO FINISH
+
+let poll = {
+  question: 'what is your favorite language?',
+  options: ['0 :js', '1:python', '2:rust', '3:c++'],
+  answers: new Array(4).fill(0),
+};
+poll.registerNewAnswers = prompt('wtah is your favorite language?');
+if (poll.registerNewAnswers <= 3) {
+  poll.answers[poll.registerNewAnswers] += 1;
+}
+console.log(poll);
+let callpoll = document.querySelector('.poll').addEventListener('click', () => {
+  poll.registerNewAnswers = prompt('what is your favorite language?');
+  poll.answers[poll.registerNewAnswers] += 1;
+  console.log(poll);
+});*/
+/* IIFE
+let iife = function () {
+  console.log("not run again");
+};
+iife();
+(function () {
+  console.log("not run again");
+})();
+(() => {
+  console.log("arrow not run again");
+})();*/
+/*
+function makeWorker() {
+  let name = 'Pete';
+
+  return function () {
+    alert(name);
+  };
+}
+
+let name = 'John';
+
+// create a function
+let work = makeWorker();
+
+// call it
+work(); // что будет показано? "Pete" (из места создания) или "John" (из места выполнения)
+
+
+let secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount++;
+    console.log(passengerCount);
+  };
+};
+secureBooking()();
+var phrase = 'Hello';
+
+function greeting(name) {
+  alert(phrase + ', ' + name);
+}
+
+function func() {
+  phrase = 'Bye';
+  greeting('John');
+}
+
+func();
+var phrase = 'Hello';
+
+function greeting(name) {
+  alert(phrase + ', ' + name);
+}
+
+function func() {
+  var phrase = 'Bye';
+  greeting('John');
+}
+
+func();
+
+let f;
+let g = function () {
+  let a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+let h = function () {
+  let b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+g();
+f();
+h();
+f();
+
+(function () {
+  let header = document.querySelector('h1');
+  header.style.color = 'red';
+  document.body.addEventListener('click', () => (header.style.color = 'blue'));
+})();
+*/
+//NUMBER
+// console.log(typeof -'23');
+console.log(typeof Number.parseInt('23FDE'));
+console.log(typeof Number.parseFloat('23FDE'));
+console.log(Number.isFinite('23'));
+console.log(Math.round("3.5"));
