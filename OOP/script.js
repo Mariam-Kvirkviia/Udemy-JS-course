@@ -220,3 +220,82 @@ let mari = new Price(2, 7);
 console.log(mari.totalCost());
 console.log(mari.total);
 */
+// Return the output array, and ignore all non-op characters
+/*let total = 0;
+function solution(number) {
+  if (number < 0) {
+    return 0;
+  } else {
+    for (let i = 0; i < number; i++) {
+      if (i % 3 === 0 && i % 5 === 0) {
+        total += i;
+      } else if (i % 3 === 0 && i % 5 !== 0) {
+        total += i;
+      } else if (i % 5 === 0 && i % 3 !== 0) {
+        total += i;
+      }
+    }
+  }
+
+  return total;
+}
+
+console.log(solution(4563));
+function solution(number) {
+  var sum = 0;
+
+  for (var i = 1; i < number; i++) {
+    if (i % 3 == 0 || i % 5 == 0) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+console.log(solution(4563));*/
+let alp = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+  e: 5,
+  f: 6,
+  g: 7,
+  h: 8,
+  i: 9,
+  j: 10,
+  k: 11,
+  l: 12,
+  m: 13,
+  n: 14,
+  o: 15,
+  p: 16,
+  q: 17,
+  r: 18,
+  s: 19,
+  t: 20,
+  u: 21,
+  v: 22,
+  w: 23,
+  x: 24,
+  y: 25,
+  z: 26,
+};
+let max = 0;
+let max2 = 0;
+let o = "";
+function high(x) {
+  x.split(" ").forEach((el) => {
+    el.split("").forEach((el2) => {
+      if (el2 !== " ") {
+        max2 += alp[el2];
+      }
+    });
+    if (max < max2) {
+      max = max2;
+      o = el;
+    }
+  });
+  return o;
+}
+
+console.log(high("m u i w"));
