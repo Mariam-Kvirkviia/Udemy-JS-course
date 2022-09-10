@@ -1,10 +1,10 @@
 "use strict";
-
+/*
 const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
 
 ///////////////////////////////////////
-/*let country = function (c) {
+let country = function (c) {
   let request = new XMLHttpRequest();
 
   request.open("GET", `https://restcountries.com/v3.1/name/${c}`);
@@ -29,7 +29,7 @@ const countriesContainer = document.querySelector(".countries");
 };
 //country("georgia");
 //country("ukraine");
-*/
+
 let renderCountry = function (data) {
   let html = ` <article class="country">
           <img class="country__img" src="${data.flags.png}" />
@@ -44,7 +44,7 @@ let renderCountry = function (data) {
   countriesContainer.insertAdjacentHTML("beforeend", html);
   countriesContainer.style.opacity = 1;
 };
-/*
+
 let countryNaibour = function (c) {
   let request = fetch(`https://restcountries.com/v3.1/name/${c}`);
   console.log(request);
@@ -97,35 +97,7 @@ let country = function (c) {
 };
 country("porgfhfhfhf");
 
-//exercises  1
-let whereAmI = function (lon, lat) {
-  fetch(
-    `https://geocode.xyz/${lon},${lat}?geoit=json&auth=494236196032854532700x110203}`
-  )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      let d = data.prov.toLowerCase();
-      console.log(`Yo're in ${data.city} , ${data.country}`);
-      return fetch(`https://restcountries.com/v3.1/alpha/${d}`);
-    })
-    .then((response2) => {
-      if (!response2.ok) {
-        throw new Error("error");
-      }
-      return response2.json();
-    })
-    .then((data2) => {
-      renderCountry(data2[0]);
-    })
-    .catch((error) => console.log("error"));
-};
-whereAmI(48.864716, 2.349014);
-whereAmI(4716, 2.349014);
+
 
 console.log(33);
 setTimeout(() => console.log(44), 0);
@@ -136,7 +108,7 @@ setTimeout(() => console.log(4), 0);
 Promise.resolve(5).then((e) => {
   console.log(e);
 });
-*/
+
 let p = new Promise(function (resolve, reject) {
   setTimeout(() => {
     if (Math.random() > 0.5) {
@@ -150,3 +122,86 @@ let p = new Promise(function (resolve, reject) {
     console.log(e);
   })
   .catch((e) => console.error(e));
+
+let notOK = function (x) {
+  if (!x) {
+    throw new Error("your make a mistake");
+  }
+};
+
+function whereAmI(position) {
+  let lng = position.coords.longitude;
+  let lat = position.coords.latitude;
+  console.log(lat, lng);
+  fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=494236196032854532700x110203`
+  )
+    .then(function (response) {
+      notOK(response.ok);
+
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(`you are in ${data.city}`);
+      return fetch(
+        `https://restcountries.com/v3.1/alpha/${data.prov.toLowerCase()}`
+      );
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data2) => {
+      renderCountry(data2[0]);
+    })
+    .catch(() => console.log("error"));
+}
+
+navigator.geolocation.getCurrentPosition(whereAmI);
+
+let o = { n: "333", m: "999" };
+let { n: first, m: second } = o;
+console.log(first, second);
+console.log(o);
+console.log(o.n);
+
+*/
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+let images = document.querySelector(".images");
+
+let show = function (path) {
+  return new Promise(function (resolve, reject) {
+    let img = document.createElement("img");
+    img.src = path;
+    img.addEventListener("load", () => {
+      images.append(img);
+      resolve(img);
+    });
+    img.addEventListener("error", () => {
+      reject(new Error("error"));
+    });
+  });
+};
+let current;
+show("img/img-1.jpg")
+  .then((img) => {
+    current = img;
+    return wait(2);
+  })
+  .then(() => {
+    current.style.display = "none";
+    return show("img/img-2.jpg");
+  })
+  .then((e) => {
+    current = e;
+    return wait(2);
+  })
+  .then((e) => {
+    current.style.display = "none";
+  })
+  .catch((a) => console.error(a));

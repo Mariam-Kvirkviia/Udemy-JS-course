@@ -46,7 +46,7 @@ body {
 }
 
 .neighbour::before {
-  content: 'Neighbour country';
+  content: "Neighbour country";
   width: 100%;
   position: absolute;
   top: -4rem;
@@ -116,6 +116,7 @@ body {
   display: block;
   width: 80rem;
   margin: 4rem;
+  height: 80rem;
 }
 
 .images img.parallel {
