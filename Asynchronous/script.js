@@ -1,8 +1,8 @@
 "use strict";
-/*
+
 const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
-
+/*
 ///////////////////////////////////////
 let country = function (c) {
   let request = new XMLHttpRequest();
@@ -30,20 +30,6 @@ let country = function (c) {
 //country("georgia");
 //country("ukraine");
 
-let renderCountry = function (data) {
-  let html = ` <article class="country">
-          <img class="country__img" src="${data.flags.png}" />
-          <div class="country__data">
-            <h3 class="country__name">${data.altSpellings[1]}</h3>
-            <h4 class="country__region">${data.continents}</h4>
-            <p class="country__row"><span>👫</span>${data.population}</p>
-           
-            
-          </div>
-        </article>`;
-  countriesContainer.insertAdjacentHTML("beforeend", html);
-  countriesContainer.style.opacity = 1;
-};
 
 let countryNaibour = function (c) {
   let request = fetch(`https://restcountries.com/v3.1/name/${c}`);
@@ -164,7 +150,7 @@ console.log(first, second);
 console.log(o);
 console.log(o.n);
 
-*/
+
 
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -205,3 +191,78 @@ show("img/img-1.jpg")
     current.style.display = "none";
   })
   .catch((a) => console.error(a));
+
+let delay = function (ms) {
+  return new Promise(function (resolve) {
+    setTimeout(() => resolve(`i waited ${ms / 1000}sec`), ms);
+  });
+};
+delay(5000)
+  .then(function (e) {
+    console.log(e);
+    return delay(4000);
+  })
+  .then(function (e) {
+    console.log(e);
+  });
+
+let renderCountry = function (data) {
+  let html = ` <article class="country">
+          <img class="country__img" src="${data.flags.png}" />
+          <div class="country__data">
+            <h3 class="country__name">${data.altSpellings[1]}</h3>
+            <h4 class="country__region">${data.continents}</h4>
+            <p class="country__row"><span>👫</span>${data.population}</p>
+           
+            
+          </div>
+        </article>`;
+  countriesContainer.insertAdjacentHTML("beforeend", html);
+  countriesContainer.style.opacity = 1;
+};
+
+let where = async function (country) {
+  try {
+    let res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+    if (!res.ok) throw new Error("error");
+    //res.json().then((data) => console.log(data));
+    let data = await res.json();
+    renderCountry(data[0]);
+  } catch (err) {
+    console.log(err);
+  }
+};
+where("portugal");
+console.log("first");
+
+async function fn() {
+  return "hello";
+}
+fn().then((e) => console.log(e));
+async function foo() {
+  throw Error("bar");
+}
+
+foo().catch(console.log);
+
+async function f() {
+  return 1;
+}
+
+f().then(alert);
+async function f() {
+  return Promise.resolve(5);
+}
+
+f().then(alert);
+
+async function f() {
+  let result = await 1; // SyntaxError
+  return result;
+}
+f().then((e) => console.log(e));
+*/
+(async function(){
+  let two = await 6
+  
+})()

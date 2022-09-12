@@ -1,0 +1,23 @@
+{
+  "name": "udemy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mashawabupr/Audio-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mashawabupr/Audio-Game/issues"
+  },
+  "homepage": "https://github.com/Mashawabupr/Audio-Game#readme",
+  "dependencies": {
+    "leaflet": "^1.8.0",
+    "lodash-es": "^4.17.21"
+  }
+}
