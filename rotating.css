@@ -1,0 +1,29 @@
+.container {
+  width: 300px;
+  height: 300px;
+  perspective: 13000px;
+  -moz-perspective: 13000px;
+  position: relative;
+  margin: 200px;
+}
+/* FRONT AND BACK HAVE CLASS -SIDE */
+.side {
+  transition: 2s;
+
+  position: absolute;
+  backface-visibility: hidden;
+}
+.front {
+  background-color: green;
+}
+.container:hover .front {
+  transform: rotateY(180deg);
+}
+.back {
+  background-color: yellow;
+
+  transform: rotateY(180deg);
+}
+.container:hover .back {
+  transform: rotateY(0deg);
+}
