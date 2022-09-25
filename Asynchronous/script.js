@@ -262,7 +262,3 @@ async function f() {
 }
 f().then((e) => console.log(e));
 */
-(async function(){
-  let two = await 6
-  
-})()

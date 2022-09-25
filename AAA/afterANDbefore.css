@@ -47,3 +47,14 @@ button:hover:before {
     transform: translateY(-20px);
   }
 }
+
+/*WITH CONTENT*/
+h1::before {
+  content: "mari";
+  background-color: pink;
+}
+h1::after {
+  content: "koka";
+
+  background-color: aquamarine;
+}

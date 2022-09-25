@@ -1,5 +1,4 @@
 "use strict";
-
 const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
 //exercises  1
@@ -67,7 +66,7 @@ res()
 
 
 
-*/
+
 let img1 = document.createElement("img");
 img1.setAttribute("src", "img/img-1.jpg");
 let img2 = document.createElement("img");
@@ -247,7 +246,7 @@ function string(x, y) {
   }
 }
 console.log(string("mardi", "iram"));
-*/
+
 let count;
 function sub(x, y) {
   if (x.length < y.length) {
@@ -263,3 +262,289 @@ function sub(x, y) {
   }
 }
 console.log(sub([1, 1, 1, 3], [1, 3, 3]));
+*/
+/* 
+function doReverse(p1) {
+  return p1.split("").reverse().join("");
+}
+function someFunction(p1, p2, p3) {
+  p1 = doReverse(p1);
+  p2 = ["1", "2", "3"];
+  p3.push("9999");
+}
+let a = "xyz";
+let b = ["123", "567"];
+let c = ["abc", "def"];
+someFunction(a, b, c);
+console.log(a);
+console.log(b);
+console.log(c);
+
+
+
+var number = 10;
+var display = function () {
+  console.log(number);
+  var number = 20;
+};
+display();
+
+
+console.log(234 ?? 23);
+console.log(0 || 23);
+console.log(234 && 23);
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+for (let [i, player] of game.scored.entries())
+  console.log(`goal ${i + 1} : ${player}`);
+
+let sum = 0;
+let odds = Object.values(game.odds);
+for (let value of Object.values(game.odds)) sum += value;
+console.log(sum / odds.length);
+
+
+for (let [team, num] of Object.entries(game.odds)) {
+  let str = team === "x" ? "draw" : `victory ${game[team]}`;
+  console.log(`odd with ${str} ${num}`);
+}
+
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+let events = [...new Set(gameEvents.values())];
+gameEvents.delete(64);
+console.log(events);
+for (let [num, str] of gameEvents) {
+  let half = num < 45 ? "first" : "second";
+  console.log(`${half} half ${num}${str}}`);
+}
+*/
+/* 
+
+
+let num = 0;
+function camel(s) {
+  s.forEach((str) => {
+    num += 1;
+    str = str.trim().split("_");
+    console.log(
+      str[0].toLowerCase() +
+        str[1].slice(0, 1).toUpperCase() +
+        str[1].slice(1).toLowerCase().padEnd(20),
+      "😅".repeat(num)
+    );
+  });
+}
+camel([" first_n", "fff_e", "3436_i"]);
+*/
+/*
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+let arr = flights.split("+");
+arr.forEach((el) => {
+  let [el1, el2, el3, el4] = el.split(";");
+  el1 = el1.split("_");
+  el1 = el1.length > 2 ? "🔴" + el1.join(" ") : el1.join(" ");
+  el2 = el2.slice(0, 3).toUpperCase();
+
+  el3 = el3.slice(0, 2).toUpperCase();
+  el4 = el4.split(":").join("h");
+  console.log(`${el1} from ${el2} to ${el3} (${el4})`.padStart(45));
+});
+
+// primitives do change but not objects!
+let flight = "kh234";
+let jonas = {
+  name: "jonas",
+  age: "34",
+};
+let checkin = function (flightnum, passenger) {
+  flightnum = "he456";
+  passenger.name = "mari";
+};
+checkin(flight, jonas);
+console.log(flight);
+console.log(jonas.name);
+
+
+let luftansa = {
+  airline: " luftansa",
+  code: "lh",
+  bookings: [],
+  book(flightnum, name) {
+    console.log(`${name} ${this.airline}`);
+  },
+};
+luftansa.book("34", "georgia");
+let eurowigs = {
+  airline: " eurowigs",
+  code: "eu",
+};
+let booked = luftansa.book;
+booked.apply(eurowigs, ["45", "tbilisi"]);
+booked.call(eurowigs, "45", "tbilisi");
+booked.bind(eurowigs, "45", "tbilisi")();
+
+var obj = { num: 2 };
+function add(a) {
+  console.log(this.num + a);
+}
+add.bind(obj, 5)();
+
+var person = {
+  first: "John",
+  last: "Smith",
+  full: function () {
+    console.log(this.first + " " + this.last);
+  },
+  personTwo: {
+    first: "Allison",
+    last: "Jones",
+    full: function () {
+      console.log(this.first + " " + this.last);
+    },
+  },
+};
+
+person.full();
+person.personTwo.full();
+
+let ten = { a: 7, b: 6 };
+function add(c, d) {
+  console.log(this.a + this.b + c + d);
+}
+add.call(ten, 3, 4);
+var small = {
+  a: 1,
+  go: function (b, c, d) {
+    console.log(this.a + b + c + d);
+  },
+};
+var large = {
+  a: 100,
+};
+
+small.go(2, 3, 4);
+small.go.call(large, 2, 3, 4);
+
+let luftansa = {
+  airline: " luftansa",
+  code: "lh",
+  bookings: [],
+  book(flightnum, name) {
+    console.log(`${name} ${this.airline}`);
+  },
+};
+luftansa.plane = 3000;
+luftansa.buyPlane = function () {
+  this.planes++;
+};
+
+function addTax(value) {
+  return function (rate) {
+    console.log(value + value * rate);
+  };
+}
+let addVat = addTax(3);
+addVat(4);
+addVat(5);
+addTax(3)(4);
+
+const poll = {
+  question: "What is your favourite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  // This generates [0, 0, 0, 0]. More in the next section 😃
+  answers: new Array(4).fill(0),
+  register() {
+    let answer = prompt([this.question, this.options.join("\n")]);
+    if (typeof Number(answer) === "number" && answer >= 0 && answer <= 3) {
+      this.answers[answer] += 1;
+    }
+    console.log(this.answers);
+  },
+  displayResults(type = "array") {
+    if (type === "string") {
+      console.log(`poll results are ${this.answers}`);
+    } else {
+      console.log(...this.answers);
+    }
+  },
+};
+// if we used listener we would need BIND()
+poll.register();
+poll.displayResults();
+//we must add answers!!!(like in displayResults)
+
+poll.displayResults.bind({ answers: [5, 2, 3]},"string" )();
+*/
+//IIFE
+/*
+(function () {
+  console.log(33);
+})();
+(() => console.log(7))();
+*/
+//map/filter/reduce
+let j = [3, 1, 2, 12, 5];
+j = j
+  .map((el) => (el <= 2 ? 2 * el : 16 + el * 4))
+  .filter((el) => el > 18)
+  .reduce((acc, el, _, arr) => acc + el / arr.length, 0);
+
+console.log(j);
